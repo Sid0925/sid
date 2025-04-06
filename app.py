@@ -203,7 +203,7 @@ app.layout = html.Div([
 
     dcc.Graph(id='live-candle-chart', style={'height': '85vh'}),
 
-    dcc.Interval(id='interval-component', interval=10*1000, n_intervals=0)
+    dcc.Interval(id='interval-component', interval=60*1000, n_intervals=0)
 ])
 
 @app.callback(
