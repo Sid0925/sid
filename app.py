@@ -1,33 +1,31 @@
-<<<<<<< HEAD
 import dash
-from dash import html
-import os
+from dash import html, dcc
+import plotly.express as px
+import pandas as pd
 
-# Create Dash app
+# Sample data
+df = pd.DataFrame({
+    "Category": ["A", "B", "C", "D"],
+    "Values": [30, 80, 45, 60]
+})
+
+# Create a bar chart
+fig = px.bar(df, x="Category", y="Values", title="Sample Bar Chart")
+
+# Initialize the Dash app
 app = dash.Dash(__name__)
-server = app.server  # Needed for Render deployment
+server = app.server  # Expose the server for deployment platforms like Render
 
-app.layout = html.Div([
-    html.H1("Hello from Render! 🌐"),
-    html.P("Your Dash app is now LIVE.")
+# App layout
+app.layout = html.Div(children=[
+    html.H1(children='Hello Dash!', style={'textAlign': 'center'}),
+
+    dcc.Graph(
+        id='example-graph',
+        figure=fig
+    )
 ])
 
+# Run the server (only locally)
 if __name__ == '__main__':
-    app.run_server(debug=False, host='0.0.0.0', port=int(os.environ.get("PORT", 10000)))
-=======
-import dash
-from dash import html
-import os
-
-app = dash.Dash(__name__)
-
-app.layout = html.Div([
-    html.H1("Hello from Railway 🚂"),
-    html.P("Your Dash app is now live!")
-])
-
-server = app.server  # Needed for Railway/Heroku-style deployment
-
-if __name__ == '__main__':
-    app.run_server(debug=True, host='0.0.0.0', port=int(os.environ.get("PORT", 8050)))
->>>>>>> b19bf6c6b7849bf92d2f04cd2fe77fec47f8b9bc
+    app.run_server(debug=True)
