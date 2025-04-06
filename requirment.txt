@@ -1,0 +1,7 @@
+dash==2.10.2
+dash
+flask
+plotly
+pandas
+oandapyV20
+python-dotenv
