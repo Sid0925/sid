@@ -19,7 +19,7 @@ client = oandapyV20.API(access_token=ACCESS_TOKEN)
 # === CONFIG ===
 DEFAULT_INSTRUMENT = "UK100_GBP"
 DEFAULT_GRANULARITY = "M1"
-COUNT = 500
+COUNT = 5000
 
 # === OU SIGNAL ===
 def add_ou_signals(df: pd.DataFrame, z_thresh: float = 1.2, cooldown: int = 15) -> pd.DataFrame:
